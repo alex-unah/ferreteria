@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductoController;
+use App\Http\Controllers\Api\EmpleadoController;
+
 
 // 1. Rutas Públicas (Cualquiera puede acceder)
 Route::post('/login', [AuthController::class, 'login']);
@@ -13,7 +15,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Operaciones del inventario protegidas
-    Route::apiResource('productos', ProductoController::class->names('api.productos'));
+    Route::apiResource('productos', ProductoController::class)->names('api.productos');
     Route::apiResource('empleado', EmpleadoController::class);
 });
 
